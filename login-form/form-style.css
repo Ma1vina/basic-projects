@@ -45,8 +45,8 @@ body {
 
 h1 {
     margin: 5px;
-    color: rgb(107, 107, 105)!important;
-    text-shadow: 1px 1px 1px #000;
+     color: rgb(70, 95, 124, 0.9);
+    text-shadow: 1px 1px 2px #000;
     text-transform: uppercase;
     font-weight: 700px;
 }
@@ -57,13 +57,14 @@ h1:hover {
 
 
 
-.box input[type ="text"],.box input[type="password"] {
+.box input[type ="text"] {
      border: 0;
      /* font-weight: bold; */
     /* background: rgb(155, 78, 24); */
-    background-color: rgba(155, 78, 24, 0.4);
+    /* background-color: rgba(155, 78, 24, 0.4); */
+    background-color: rgba(26, 26, 26, 0.6);
     display: block;
-    border: 2px solid rgb(155, 78, 24, 0.4);
+    border: 2px solid rgba(184, 90, 24, 0.5);
     width: 270px;
     text-align: center;
     margin: 20px auto;
@@ -73,12 +74,32 @@ h1:hover {
     box-shadow:2px 2px 2px rgba(31, 31, 31, 0.65);
 }
 
+.box input[type="password"] {
+    border: 0;
+    /* font-weight: bold; */
+   /* background: rgb(155, 78, 24); */
+   /* background-color: rgba(155, 78, 24, 0.4); */
+   background-color: rgba(26, 26, 26, 0.6);
+   display: block;
+   border: 2px solid rgba(184, 90, 24, 0.5);
+   width: 270px;
+   text-align: center;
+   margin-top: 20px;
+   margin-bottom: 1px;
+   padding: 14px 10px;
+   border-radius:25px;
+   transition: 0,25px; 
+   box-shadow:2px 2px 2px rgba(31, 31, 31, 0.65);
+}
+
+
 ::placeholder{
-    color: rgb(114, 114, 134)!important;
+    color: rgb(107, 107, 105, 0,4)!important;
     font-size: 13px;
     text-shadow: 1px 1px 1px #000;
      font-style: italic;
 }
+
 
 /* .box input[type ="text"],.box input[type="password"]:focus {
     font-size: 16px;
@@ -95,24 +116,27 @@ h1:hover {
 .box input[type="password"]:hover {
     color:  #000;
     border-color: chocolate; 
+
+
 }
 
+
 .box input[type ="submit"] {
-    color: rgb(107, 107, 105);
+    color: rgb(160, 159, 159);
     font-weight: bold;
     font-size: 16px;
     text-shadow: 1px 1px 1px #000;
     border: 0;
-    background-color: rgba(155, 78, 24, 0.4);
+    background-color: rgba(184, 80, 7, 0.527);
     display: block;
-    border: 2px solid rgb(155, 78, 24, 0.4);
+    border: 2px solid rgba(184, 80, 7, 0.527);
     width: 120px;
     text-align: center;
-    margin: 20px auto;
+    margin: 30px auto;
     padding: 14px 10px;
     border-radius:25px;
     transition: 0,25px; 
-    box-shadow:2px 2px 2px rgba(31, 31, 31, 0.65);
+    box-shadow:2px 2px 2px rgba(31, 31, 31, 0.8);
 }
 
 .box input[type ="submit"]:focus {
@@ -122,19 +146,19 @@ h1:hover {
 
 }
 .box input[type ="submit"]:hover { 
-    color: rgb(136, 136, 136);
+    color: rgb(197, 197, 197);
     border-color: chocolate;
 }
 
 a {
-    color: rgba(114, 114, 134, 0.856);
+    color: rgba(126, 126, 143, 0.856);
     font-weight: 600;
     text-decoration: none;
     text-shadow: 1px 1px 1px #000;
 }
   
 a:hover {
-    color: rgb(114, 114, 134);
+    color: rgb(164, 164, 172);
     text-decoration: none;
     text-shadow: 1px 1px 1px #000;
   }
@@ -142,6 +166,7 @@ a:hover {
 
   .password {
 	position: relative;
+    margin: 0;
 }
 .Pwd-control {
 	position: absolute;
@@ -151,14 +176,50 @@ a:hover {
 	width: 16px;
 	height: 16px;
 	background: url(image/view.svg) 0 0 no-repeat;
-    opacity: 0.8; 
+    
+    
 }
 .Pwd-control.view {
     width: 18px;
 	height: 18px;
 	background: url(image/no_view.svg) 0 0 no-repeat;
-    opacity: 0.7; 
+    opacity: 0.9; 
 }
 
+/* текст "показать пароль" */
+/* .password a button{
+    position: absolute;
+    top: 1px;
+    opacity: 0;
+}
+ .password a button:hover{
+    margin: 10px;
+    cursor: pointer;
+    transition: .5s ease;
+    opacity: 1;
+  } */
 
-  
+
+.registr {
+    font-size: 11px;
+    position: absolute;
+    left: 85px;
+    top: 40px;
+    /* padding-right: 150px;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-top:  0; */
+    margin-bottom: 0;
+    color:rgba(114, 114, 134, 0.6);
+    text-decoration: none;
+    font-style: italic;
+  }
+
+  .registr:hover {
+    color:rgb(211, 211, 231);
+    text-decoration: underline;
+  }
+
+  a:active {
+    color:rgba(114, 114, 134, 0.856);
+  }
