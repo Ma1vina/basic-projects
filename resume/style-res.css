@@ -376,3 +376,12 @@ font-weight: 300;
 padding: 0px 4px;
 }
 
+@media (max-width:700px) {
+  .info {
+    display: block;
+    text-align: center;
+  }
+.заголовок-project,.заголовок-project::before   {
+  display: block;
+}
+}
