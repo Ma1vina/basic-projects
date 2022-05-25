@@ -59,6 +59,7 @@ h1:hover {
 
 .box input[type ="text"] {
      border: 0;
+     color: rgba(223, 223, 223, 0.774);
      /* font-weight: bold; */
     /* background: rgb(155, 78, 24); */
     /* background-color: rgba(155, 78, 24, 0.4); */
@@ -75,6 +76,7 @@ h1:hover {
 }
 
 .box input[type="password"] {
+    color: rgba(223, 223, 223, 0.774);
     border: 0;
     /* font-weight: bold; */
    /* background: rgb(155, 78, 24); */
@@ -108,13 +110,13 @@ h1:hover {
 /* } */
 
 .box input[type ="text"]:hover { 
-    color:  #000;
+    color: rgba(223, 223, 223, 0.774);
     border-color: chocolate;
 
 }
 
 .box input[type="password"]:hover {
-    color:  #000;
+    color: rgba(223, 223, 223, 0.774);
     border-color: chocolate; 
 
 
@@ -173,9 +175,12 @@ a:hover {
 	top: 16px;
 	right: 19px;
 	display: inline-block;
-	width: 16px;
-	height: 16px;
-	background: url(image/view.svg) 0 0 no-repeat;
+	width: 17px;
+	height: 17px;
+	background: url(image/view5.svg) 0 0 no-repeat;
+    /* border: 0.5px solid rgba(206, 103, 29, 0.1);
+    border-radius: 50%;
+     */
     
     
 }
@@ -223,3 +228,6 @@ a:hover {
   a:active {
     color:rgba(114, 114, 134, 0.856);
   }
+
+
+  
