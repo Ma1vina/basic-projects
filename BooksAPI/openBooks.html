@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+    <button id="btn" class="btnstyle">⇐ Back</button>
+    <h1>Library</h1>
+    <div id="root" class="styles"></div>
+
+
+    <script>
+const btn = document.getElementById("btn")
+const root = document.getElementById("root");
+
+
+function fetchBible(url){
+   return fetch(url,{
+    headers: {
+        Authtorisation: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlN1biBPY3QgMDIgMjAyMiAxODo1ODoyOCBHTVQrMDAwMC5jaGVrbWVuZXZhLm1hcmlubmFAZW1haWwucnUiLCJpYXQiOjE2NjQ3MzcxMDh9.Hgw4Xj1DE-BZeXwS-2c1l2-Nx_7W7z6PaKuTj3a7mAo"
+    },
+}).then((res) =>{
+     return res.json();
+})
+};
+
+
+function getBooks(){
+fetchBible("https://www.abibliadigital.com.br/api/books")
+.then((res) =>{
+    [...res].forEach((elem) => {
+       const newElem = document.createElement("div");
+       newElem.innerHTML = elem.author + "- " + elem.name;
+       newElem.onclick = () => getChapter(elem.chapters,elem.abbrev.en)
+        root.append(newElem)
+        btn.onclick = undefined;
+    })
+});
+}
+getBooks();
+
+
+function getChapter(chapters,abbrev){
+    root.innerHTML = "";
+    let count = 1;
+for(let i=0; i<chapters;i++){
+    let chaptBible = document.createElement("div")
+    chaptBible.innerHTML = count++ + "." + " Chapter";
+    root.append(chaptBible); 
+
+    btn.onclick = () => {
+    root.innerHTML = ""
+    getBooks()}
+
+    chaptBible.onclick=()=>{
+        getVerse(abbrev, i+1, chapters)
+    };
+    
+}
+
+}
+
+function getVerse(abbrev,chapter,chapters){
+    root.innerHTML = "";
+    fetchBible(`https://www.abibliadigital.com.br/api/verses/bbe/${abbrev}/${chapter}`)
+    .then((res) =>{
+        let result = res.verses;
+        for(let i=0; i<result.length;i++){
+            const ver = document.createElement("p")
+            ver.textContent = result[i].text;
+            ver.classList.add("pstyle");
+            root.append(ver);
+
+        }
+        btn.onclick = () => {
+    root.innerHTML = ""
+    getChapter(chapters,abbrev)}
+    }
+    )
+}
+    </script>
+    
+</body>
+</html>

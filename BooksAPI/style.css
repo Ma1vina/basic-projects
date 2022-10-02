@@ -1,0 +1,38 @@
+html{
+     background-image: url(damion.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+}
+
+
+.styles{
+    text-align: center; 
+    font-size:x-large;
+} 
+
+.btnstyle{
+    margin-left: 50px;
+    margin-top: 20px;
+    width: 150px;
+    height: 50px;
+    font-size: medium;
+    border-radius: 10px;
+    background-color: rgba(27, 27, 27, 0.8);
+    color: #fff;
+}
+
+h1{
+    text-align: center;
+    font-size:50px;
+}
+
+.pstyle{
+    margin-left: 300px;
+    margin-right: 300px;
+}
