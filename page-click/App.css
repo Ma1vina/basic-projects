@@ -1,0 +1,22 @@
+.App {
+  text-align: left;
+}
+
+.window{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  background-color: rgb(192, 192, 192);
+  position: absolute;
+}
+
+.btn{
+  top: 50px;
+  position: relative;
+  left: 250px;
+}
+
+.inPageBtn{
+  float: right;
+}
