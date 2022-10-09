@@ -1,0 +1,52 @@
+.App {
+  display: flex;
+  width: 100%;
+
+}
+
+.left{
+flex-basis: 30%;
+flex-shrink: 1;
+text-align: center;
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 50px;
+margin-left: 30px;
+margin-right: 30px;
+}
+
+/* .center{
+
+} */
+
+
+.right{
+  flex-basis: 50%;
+  flex-shrink: 3;
+  text-align: center;
+  padding-left: 100px;
+padding-right: 200px;
+margin-left: 30px;
+margin-right: 30px;
+padding-top: 50px;
+}
+
+.styleP{
+  display: flex;
+  width: 90%;
+  border: solid 1px #000;
+  margin:20px ;
+  padding: 10px;
+}
+
+
+.p{
+  flex-basis:95%;
+}
+
+.btn{
+  height: 20px;
+  flex-basis: 5%;
+  text-align: center;
+}
+
