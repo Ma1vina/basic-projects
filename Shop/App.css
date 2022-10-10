@@ -15,12 +15,30 @@ html{
 
 
 .basket{
-flex-basis: 90%;
-margin: 30px;
+flex-basis: 100%;
+margin: 20px;
+padding: 20px;
+}
+
+span{
+font-size: 14px;
+padding-top: 1px;
+margin-bottom: 5px;
+width: 400px;
+text-align:left;
+font-weight: 500;
+}
+
+h1{
+  font-size: 30px;
+ text-align: left;
+ margin-bottom: 1px;
+
 }
 
 .logoStyle{
 margin: 10px;
+padding-left: 10px;
 
 }
 

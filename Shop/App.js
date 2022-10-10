@@ -27,7 +27,11 @@ function hundlerIncrease(state,funcState,sum){
 }
 
 function hundlerDecrease(state,funcState, sum){
-  funcState(sum=state-1)
+    if(state>=1){
+        funcState(sum=state-1)
+    }else{
+        funcState(state);
+    }
   setCountAll(sum);
 }
 
