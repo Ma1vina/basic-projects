@@ -1,0 +1,47 @@
+html{
+  background-color: rgb(247, 250, 225);
+}
+
+.App {
+  text-align: right;
+}
+
+
+.containerHeader{
+  display: flex;
+  width: 100%;
+  background-color:  rgba(94, 155, 117, 0.374);
+}
+
+
+.basket{
+flex-basis: 90%;
+margin: 30px;
+}
+
+.logoStyle{
+margin: 10px;
+
+}
+
+.box{
+  margin: 40px;
+  width: 20%;
+  height: 20%;
+  border: solid 4px rgba(94, 155, 117, 0.374);
+  padding: 15px;
+  background-color: rgba(205, 231, 218, 0.374);
+}
+
+.containerBody{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  height: 100%;
+  margin-left: 100px;
+}
+
+
+.classNameSale{
+  font-weight: 700;
+}
