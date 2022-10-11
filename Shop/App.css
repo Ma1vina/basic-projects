@@ -43,9 +43,9 @@ padding-left: 10px;
 }
 
 .box{
-  margin: 40px;
-  width: 20%;
-  height: 20%;
+  margin: 30px;
+  width: 160px;
+  height: 350px;
   border: solid 4px rgba(94, 155, 117, 0.374);
   padding: 15px;
   background-color: rgba(205, 231, 218, 0.374);
@@ -56,7 +56,8 @@ padding-left: 10px;
   align-items: flex-start;
   flex-wrap: wrap;
   height: 100%;
-  margin-left: 100px;
+  margin-left: 30px;
+  margin-top: 10px;
 }
 
 
