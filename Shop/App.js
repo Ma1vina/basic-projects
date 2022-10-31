@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import logo from "./logo.png"
-import { Header } from './Header';
 import { Elems } from './components/Elems';
 import { data } from './data';
+import { Route, Routes, Link} from 'react-router-dom';
+import { Layout } from './Layout';
+import { Basket } from './basket';
 
 
 
@@ -29,12 +30,16 @@ console.log(countAll)
 
 
   return (
-    <div className="App">
-       <Header classNameBasket={'basket'} className={"containerHeader"} classNameLog={'logoStyle'} src={logo} alt={"logo"} width={"70px"} height={"70px"} value = {summ}/>
-     <div>
-      <Elems countAll={countAll}  watchState = {setCountforElems} />
-     </div>
-    </div>
+    <Routes>
+
+       <Route path="/" element={<Layout value ={summ}/> }>
+
+        <Route index element ={<Elems watchState = {setCountforElems} countAll={countAll} />}></Route>
+        <Route path='/basket' element ={<Basket watchState = {setCountforElems} countAll={countAll} />}></Route>
+
+       </Route>
+       
+    </Routes>
   );
 }
 

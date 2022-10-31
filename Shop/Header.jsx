@@ -1,13 +1,22 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import logo from "./logo.png"
 
  export function Header(props){
 
+
  return(
-    <div className={props.className}>
-        <img className={props.classNameLog} src={props.src} alt={props.alt} width={props.width} height={props.height}></img>
-    <span><h1>Shop</h1>The market for recreation, leisure and tourism products</span>
-    <div className={props.classNameBasket}>Корзинa ({props.value})
+    <div className="containerHeader">
+        <img className='logoStyle' src={logo} alt={logo} width="70px" height="70px"></img>
+    <span>    
+    <Link to="/"><h1>Shop</h1></Link>
+    The market for recreation, leisure and tourism products</span>
+ 
+    <Link to='/basket'>
+    <div className='basket'> Корзинa({props.value})
     </div>
+    </Link>
+
     </div>
  )
  }
