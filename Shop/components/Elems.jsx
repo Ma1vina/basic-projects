@@ -10,9 +10,8 @@ return(
         {data.map((elem, i) => {
  return(
     <Prod key={i} image={elem.img} description={elem.description}  price = {elem.price} 
-    count={props.countAll[i]}
+    count={props.countAll[i]||0}
     setCount ={(count) =>props.watchState(i,count)} />
-
  )
         })}
     </div>

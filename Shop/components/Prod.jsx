@@ -7,7 +7,7 @@ function inc(){
 props.setCount(props.count+1)
 }
 function dec(){
-    if(props.count>0){
+    if(props.count !== undefined){
         props.setCount(props.count -1)  
     }else{
         props.setCount(0)

@@ -7,15 +7,16 @@ import logo from "./logo.png"
 
  return(
     <div className="containerHeader">
-        <img className='logoStyle' src={logo} alt={logo} width="70px" height="70px"></img>
-    <span>    
+        <div className="BoxLogo"><img className='logoStyle' src={logo} alt={logo} width="70px" height="70px"></img></div>
+        <div className="BoxText"><span>      
     <Link to="/"><h1>Shop</h1></Link>
-    The market for recreation, leisure and tourism products</span>
- 
+    The market for recreation, leisure and tourism products</span></div>
+    <div className="BoxBasket">
     <Link to='/basket'>
     <div className='basket'> Корзинa({props.value})
     </div>
     </Link>
+    </div>
 
     </div>
  )

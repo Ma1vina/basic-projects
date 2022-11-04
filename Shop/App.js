@@ -12,7 +12,7 @@ function App() {
  const [countAll, setCountAll] = useState([]);
 
 useEffect(() =>{
-  const startCountInit = data.map(() =>0)
+  const startCountInit = data.map(() =>undefined)
   // console.log(startCountInit )
     setCountAll(startCountInit)
   },[])
@@ -25,9 +25,12 @@ console.log(countAll)
  }
 
  let summ = countAll.reduce((acc,elem)=>{
+  if(elem !== undefined){
   return acc + elem
- }, 0)
-
+ }else{
+  return acc;
+ }
+}, 0)
 
   return (
     <Routes>
@@ -35,7 +38,7 @@ console.log(countAll)
        <Route path="/" element={<Layout value ={summ}/> }>
 
         <Route index element ={<Elems watchState = {setCountforElems} countAll={countAll} />}></Route>
-        <Route path='/basket' element ={<Basket watchState = {setCountforElems} countAll={countAll} />}></Route>
+        <Route path='/basket' element ={<Basket result={summ} value={summ} watchState = {setCountforElems} countAll={countAll} />}></Route>
 
        </Route>
        
