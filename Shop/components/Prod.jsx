@@ -7,7 +7,7 @@ function inc(){
 props.setCount(props.count+1)
 }
 function dec(){
-    if(props.count !== undefined){
+        if(props.count>0){
         props.setCount(props.count -1)  
     }else{
         props.setCount(0)
@@ -21,9 +21,10 @@ function dec(){
             <br/>
             {props.description}
             <br/>
-            {props.price}
+            <br/>
+            {props.price} ₽
             <br/> <br/>
-            <br/> <br/>
+            <br/> 
             В корзину:
             <br/> <br/>
             <button onClick={dec}>-</button>

@@ -4,7 +4,7 @@ import { Header } from "./Header";
 export function Layout(props){
 return(
   <div className="App">
-<Header value={props.value}/>
+<Header value={props.value} countAll={props.countAll}/>
 <Outlet/>
  </div>
 )

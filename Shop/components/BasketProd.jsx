@@ -20,7 +20,8 @@ export function BasketProd(props){
             {props.count}
             <button onClick={inc}>+</button>
             </div>
-            <div className="baskPrice"> {props.price} </div>
+            <div className="baskPrice"> {props.price} ₽</div>
+            <button className="btn-style" onClick={() =>props.setCount(undefined)}>удалить</button>
             
         </div>
     )

@@ -13,7 +13,7 @@ import logo from "./logo.png"
     The market for recreation, leisure and tourism products</span></div>
     <div className="BoxBasket">
     <Link to='/basket'>
-    <div className='basket'> Корзинa({props.value})
+    <div className='basket' onClick={() => localStorage.setItem("prod", JSON.stringify(props.countAll))}> Корзинa({props.value})
     </div>
     </Link>
     </div>

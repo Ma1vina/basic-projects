@@ -95,6 +95,7 @@ padding-left: 10px;
 .baskImg{
   flex-basis: 20%;
   margin-right: 5%;
+  
 }
 
 .baskDesc{
@@ -114,8 +115,7 @@ padding-left: 10px;
   display: flex;
   justify-content:flex-end;
   height: 30px;
-  border:solid 2px rgba(32, 128, 68, 0.374); 
-  border-radius: 15%;
+  border:solid 3px rgba(192, 127, 41, 0.374); 
   margin: 15px;
   padding: 5px;
   margin-left: 15%;
@@ -123,10 +123,15 @@ padding-left: 10px;
 }
 .res-prod{
   flex-basis: 30%;
-  margin-right: 8%;
+  margin-right: 6%;
 
 }
 .res-summ{
   flex-basis: 20%;
   margin-right: 9%;
+}
+
+.btn-style{
+  height: 21px;
+  margin-left: 20px;
 }
