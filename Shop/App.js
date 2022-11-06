@@ -5,6 +5,7 @@ import { data } from "./data";
 import { Route, Routes, Link } from "react-router-dom";
 import { Layout } from "./Layout";
 import { Basket } from "./basket";
+import { OpenProduct } from "./components/OpenProduct";
 
 function App() {
   const [countAll, setCountAll] = useState([]);
@@ -35,6 +36,9 @@ function App() {
     }
   }, 0);
 
+  // const get = (elem) =>{
+  //   data.filter(p => p.id == elem.id)
+
   return (
     <Routes>
       <Route path="/" element={<Layout value={summ} countAll={countAll} />}>
@@ -53,6 +57,22 @@ function App() {
             />
           }
         ></Route>
+
+
+
+<Route
+          path="/openProd"
+          element={
+            <OpenProduct
+            watchState={setCountforElems} countAll={countAll}
+            />
+          }
+        ></Route>
+
+
+
+
+
       </Route>
     </Routes>
   );
