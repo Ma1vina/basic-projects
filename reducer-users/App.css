@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  overflow: auto;
+}
+
+.block-bonus {
+  border: 2px solid #2a3f52;
+  padding: 30px;
+  background-color: #fffafe;
+  margin: 20px;
+  border-radius: 50px;
+
+}
+.block-client {
+  height: 80%;
+  border: 2px solid #2a3f52;
+  padding: 50px;
+  background-color: #fffafe;
+  margin: 30px;
+  border-radius: 10px;
+
+}
+
+.btn-style {
+  width: 150px;
+  height: 70px;
+  background: #79addb;
+  border:1px solid #2a3f52;
+  border-radius: 5px;
+  margin: 5px;
+  font-size: 20px;
+}
