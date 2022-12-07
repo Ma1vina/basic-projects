@@ -1,8 +1,7 @@
 import { useState } from "react";
 import "./style/App.css"
 import { PostList } from "./components/PostList";
-import { MyButton } from "./components/UI/button/MyButton";
-import { MyInput } from "./components/UI/input/MyInput";
+import {PostForm} from "./components/PostForm";
 
 
 function App() {
@@ -11,22 +10,33 @@ const [posts, setPosts] = useState([
   {id:2, title:"JavaScript2", body: "description2"}
 ])
 
-const [title, setTitle] = useState('123')
+const createPost = (newPost) =>{
+  setPosts([...posts, newPost])
 
-function addNewPost(event){
-event.preventDefault()
-console.log(title);
 }
 
+const removePost = (post) => {
+setPosts(posts.filter(elem => elem.id !== post.id))
+}
 
   return (
     <div className="App">
-      <form>
-        <MyInput  value={title} onChange={event => setTitle(event.target.value)} placeholder="Название поста"></MyInput>
-        <MyInput placeholder="Описание поста"></MyInput>
-        <MyButton onClick ={addNewPost} >Создать пост</MyButton>
-      </form>
-    <PostList posts ={posts} title = {"Cписок постов 1"}/>
+    <PostForm create={createPost} />
+    <hr style={{margin: "15px 0"}}/>
+
+     <div>
+     <select>
+        <option value="value">По названию</option>
+        <option value="value">По описанию</option>
+      </select>
+     </div>
+
+    {posts.length !== 0 
+    ? <PostList remove ={removePost} posts ={posts} title = {"Cписок постов 1"}/>
+    :
+ <h1 style={{textAlign: "center"}}>Посты не найдены!</h1>
+}
+   
 
     </div>
   );
