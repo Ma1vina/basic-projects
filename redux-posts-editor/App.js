@@ -2,8 +2,7 @@ import { useMemo, useState } from "react";
 import "./style/App.css"
 import { PostList } from "./components/PostList";
 import {PostForm} from "./components/PostForm";
-import { MySelect } from "./components/MySelect";
-import { MyInput } from "./components/UI/input/MyInput";
+import { PostFilter } from "./components/PostFilter";
 
 
 function App() {
@@ -12,23 +11,24 @@ const [posts, setPosts] = useState([
   {id:2, title:"гг", body: "вв"},
   {id:3, title:"мм", body: "аа"}
 ])
-const [searchQuery, setSearchQuery] = useState("");
-const [selectedSort, setSelectedSort] = useState("");
+// const [searchQuery, setSearchQuery] = useState("");
+// const [selectedSort, setSelectedSort] = useState("");
 
+const [filter, setFilter] = useState({sort: "", query: ""});
 
 const sortedPosts =useMemo(() =>{
 console.log("worked getSortedPosts")
-if(selectedSort){
-  return [...posts].sort((a,b) => a[selectedSort].localeCompare(b[selectedSort]));
+if(filter.sort){
+  return [...posts].sort((a,b) => a[filter.sort].localeCompare(b[filter.sort]));
 }
 return posts
-},[selectedSort,posts])
+},[filter.sort,posts])
 
 
 
 const sortAndSearchedPosts =useMemo(() => {
-return sortedPosts.filter(post=> post.title.toLowerCase().includes(searchQuery.toLowerCase()))
-}, [searchQuery,sortedPosts])
+return sortedPosts.filter(post=> post.title.toLowerCase().includes(filter.query.toLowerCase()))
+}, [filter.query,sortedPosts])
 
 const createPost = (newPost) =>{
   setPosts([...posts, newPost])
@@ -48,23 +48,8 @@ const sortPosts = (sort)=>{
     <div className="App">
     <PostForm create={createPost} />
     <hr style={{margin: "15px 0"}}/>
-     <div>
-
-      <MyInput 
-      value={searchQuery}
-      onChange ={event => setSearchQuery(event.target.value)}
-      placeholder="Поиск..."/>
-
-
-    <MySelect
-     value={selectedSort} 
-     onChange={sortPosts}
-     defaultValue="Cортировка по" 
-     options={[
-      {value: 'title', name: "По названию"},
-      {value: 'body', name: "По описанию"}
-    ]}/>
-     </div>
+    
+    <PostFilter filter={filter} setFilter={setFilter}/>
 
     {sortAndSearchedPosts.length !== 0 
     ? <PostList remove ={removePost} posts ={sortAndSearchedPosts} title = {"Cписок постов 1"}/>
