@@ -17,8 +17,8 @@ const [modal,setModal] = useState(false);
 const sortAndSearchedPosts = usePosts(posts, filter.sort, filter.query)
 
 useEffect(() =>{
-  console.log("отработал useeffect");
-},[filter, posts, modal]);
+  fetchPosts();
+},[]);
 
 const createPost = (newPost) =>{
   setPosts([...posts, newPost])
