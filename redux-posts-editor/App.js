@@ -8,6 +8,8 @@ import { MyButton } from "./components/UI/button/MyButton";
 import { usePosts } from "./hooks/usePosts";
 import PostService from "./API/PostService";
 import { Loader } from "./components/UI/Loader/Loader";
+import { useFetching } from "./hooks/useFetching";
+import { getPagesArray, getPagesCount } from "./utils/pages";
 
 
 
@@ -17,7 +19,18 @@ const [posts, setPosts] = useState([])
 const [filter, setFilter] = useState({sort: "", query: ""});
 const [modal,setModal] = useState(false);
 const sortAndSearchedPosts = usePosts(posts, filter.sort, filter.query)
-const [isPostsLoading, setPostsLoading] = useState(false)
+const [totalPages,setTotalPages] = useState(0);
+const [limit,setLimit] = useState(10);
+const [page,setPage] = useState(1)
+
+let pagesArray = getPagesArray(totalPages);
+
+const [fetchPosts,isPostsLoading, postError] = useFetching(async() =>{
+  const response = await PostService.getAll(limit,page)
+    setPosts(response.data);
+    const totalCount =  response.headers['x-total-count'];
+    setTotalPages(getPagesCount(totalCount,limit))
+})
 
 useEffect(() =>{
   fetchPosts();
@@ -29,20 +42,13 @@ const createPost = (newPost) =>{
 
 }
 
-async function fetchPosts(){
-  setPostsLoading(true)
-  setTimeout(async ()=> {
-    const posts = await PostService.getAll()
-    setPosts(posts);
-    setPostsLoading(false)
-  }, 1000)
-  
-}
 
 const removePost = (post) => {
 setPosts(posts.filter(elem => elem.id !== post.id))
 }
  
+
+
 
   return (
     <div className="App">
@@ -53,6 +59,8 @@ setPosts(posts.filter(elem => elem.id !== post.id))
     <hr style={{margin: "15px 0"}}/>
     
     <PostFilter filter={filter} setFilter={setFilter}/>
+    {postError &&
+    <h1 style={{display:"flex", justifyContent:"center"}}>Произошла ошибка...</h1>}
      {isPostsLoading
      ? <div style={{display:"flex", justifyContent:"center", marginTop: "50px" }}><Loader/></div>
     :<PostList remove ={removePost} posts ={sortAndSearchedPosts} title = {"Cписок постов 1"}/>
