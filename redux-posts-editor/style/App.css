@@ -39,3 +39,17 @@ width: 800px;
   transition: all 500ms ease-in;
 }
 
+.page{
+padding: 10px;
+border: 1px solid purple;
+cursor: pointer;
+}
+.page_wrapper{
+  margin-top: 30px;
+  display: flex;
+}
+
+.page_current{
+  border: 3px solid rgb(197, 73, 197);
+  font-weight: bold;
+}
