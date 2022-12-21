@@ -10,8 +10,7 @@ import PostService from "./API/PostService";
 import { Loader } from "./components/UI/Loader/Loader";
 import { useFetching } from "./hooks/useFetching";
 import { getPagesArray, getPagesCount } from "./utils/pages";
-
-
+import { Pagination } from "./components/UI/pagination/Pagination";
 
 
 function App() {
@@ -23,7 +22,7 @@ const [totalPages,setTotalPages] = useState(0);
 const [limit,setLimit] = useState(10);
 const [page,setPage] = useState(1)
 
-let pagesArray = getPagesArray(totalPages);
+
 const [fetchPosts,isPostsLoading, postError] = useFetching(async() =>{
   const response = await PostService.getAll(limit,page)
     setPosts(response.data);
@@ -65,12 +64,8 @@ setPosts(posts.filter(elem => elem.id !== post.id))
      ? <div style={{display:"flex", justifyContent:"center", marginTop: "50px" }}><Loader/></div>
     :<PostList remove ={removePost} posts ={sortAndSearchedPosts} title = {"Cписок постов 1"}/>
 }
-<div className="page_wrapper">
-{pagesArray.map(p=>
- <span onClick={() =>changePage(p)} key={p} className={page === p ? "page page_current" : "page"}>
-  {p}</span>
-)}
-</div>
+<Pagination page={page} changePage={changePage} totalPages={totalPages}/>
+
     </div>
   );
 }
