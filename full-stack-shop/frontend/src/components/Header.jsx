@@ -3,13 +3,12 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import logo from "./logo.png";
 
-
 export function Header() {
   const count = useSelector((state) => state.count.count);
 
   let summ = count.reduce((acc, elem) => {
     if (elem !== undefined) {
-      return acc + elem;
+      return acc + elem.count;
     } else {
       return acc;
     }
@@ -18,12 +17,7 @@ export function Header() {
   return (
     <div className="containerHeader">
       <div className="BoxLogo">
-        <img
-          className="logoStyle"
-          src={logo}
-          width="70px"
-          height="70px"
-        ></img>
+        <img className="logoStyle" src={logo} width="70px" height="70px"></img>
       </div>
       <div className="BoxText">
         <span>
@@ -39,7 +33,7 @@ export function Header() {
             className="basket"
             onClick={() => localStorage.setItem("count", JSON.stringify(count))}
           >
-            Корзинa({summ})
+            Корзинa ({summ})
           </div>
         </Link>
       </div>

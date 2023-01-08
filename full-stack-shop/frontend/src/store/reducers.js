@@ -5,24 +5,38 @@ const defaultState = {
 export const countReducer = (state = defaultState, action) => {
   switch (action.type) {
     case "INIT":
-      if(action.payload.localC){
-        return {...state, count: action.payload.localC}// из ? localstorage
+      if (action.payload.localC) {
+        return { ...state, count: action.payload.localC }; // из ? localstorage
       }
       const prodsCount = [];
-      for (let i = 0; i < action.payload; i++) {
-        prodsCount.push(undefined);
-      }
       return { ...state, count: prodsCount };
-    // case "SETCOUNTFORINDEX":
-    //   state.count[action.payload.index] = action.payload.count; //index и count -индекс и число - arr[i] = count
-    //   return { ...state, count: [...state.count] };
 
-      case "INCREMENT":
-// return { ...state, count: [...state.count] };
+    case "INCREMENT":
+      let countInc = state.count.find((elem) => elem.id === action.payload);
+      if (!countInc) {
+        let initCountObj = { count: 1, id: action.payload };
+        return { ...state, count: [...state.count, initCountObj] };
+      }
+      countInc.count++;
+      return { ...state, count: [...state.count] };
+
+    case "DECREMENT":
+      let countDec = state.count.find((elem) => elem.id === action.payload);
+      if (countDec && countDec.count > 0) {
+        countDec.count--;
+        return { ...state, count: [...state.count] };
+      }
+      let initCountObj = { count: 0, id: action.payload };
+      return { ...state, count: [...state.count, initCountObj] };
+
+
+      case "DELETE":
+        let countDelete = state.count.filter((elem) => elem.id !== action.payload);
+        return { ...state, count: [...countDelete] };
+
     default:
       return state;
-  };
-
+  }
 };
 
 const dataProd = {
@@ -32,9 +46,20 @@ const dataProd = {
 export const productReducer = (state = dataProd, action) => {
   switch (action.type) {
     case "PRODUCTS":
-     state.products = action.payload 
-     return {...state, products: [...state.products]}
-     default: 
-     return state;
+      state.products = action.payload;
+      return { ...state, products: [...state.products] };
+    default:
+      return state;
+  }
+};
+
+const page = "";
+export const pagesReducer = (state = page,action)=>{
+  switch (action.type) {
+    case "PAGES":
+      state = action.payload;
+      return state;
+      default:
+        return state;
   }
 }
