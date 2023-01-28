@@ -5,9 +5,11 @@ import { Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import { Basket } from "./components/Basket";
 import { useDispatch } from "react-redux";
+import { useSearchParams } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   function fetchGetData(url) {
     return fetch(url).then((response) => response.json());
@@ -17,12 +19,27 @@ function App() {
     const countLocal = localStorage.getItem("count");
     const countParse = JSON.parse(countLocal);
 
-    let objForSend = { elem: 5, page: 0, min: 0, max: 1e6 };
-    let url = new URL("http://localhost:5000/prod");
-    Object.keys(objForSend).forEach((key) => {
-      url.searchParams.append(key, objForSend[key]);
-    });
+    let min = searchParams.get("min");
+    let max = searchParams.get("max");
 
+    let objForSend = { elem: 5, page: 1 };
+    let url = new URL("http://localhost:5000/prod");
+    if (min !== null) {
+      objForSend.min = min;
+    }
+    if (max !== null) {
+      objForSend.max = max;
+    }
+    Object.keys(objForSend).forEach(
+      (key) => objForSend[key] && url.searchParams.append(key, objForSend[key])
+    );
+
+    if (min !== null) {
+      searchParams.set("min", min);
+    }
+    if (max !== null) {
+      searchParams.set("max", max);
+    }
     const prod = fetchGetData(url);
     prod.then((result) => {
       dispatch({

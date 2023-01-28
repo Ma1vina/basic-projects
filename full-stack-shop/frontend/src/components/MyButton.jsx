@@ -4,7 +4,9 @@ import { useSearchParams } from "react-router-dom";
 
 export function MyButton(props) {
   const [searchParams, setSearchParams] = useSearchParams();
+
   let dispatch = useDispatch();
+
   function fetchGetData(url) {
     return fetch(url).then((response) => response.json());
   }
@@ -13,26 +15,39 @@ export function MyButton(props) {
     let min = searchParams.get("min");
     let max = searchParams.get("max");
 
-    let correctPageNumber = props.pageNumber - 1;
-    let objForSend = { elem: 5, page: correctPageNumber, min: min, max: max };
+
+    let objForSend = { elem: 5, page: props.pageNumber };
+    if (min != null) {
+      objForSend.min = min;
+    }
+    if (max != null) {
+      objForSend.max = max;
+    }
     let url = new URL("http://localhost:5000/prod");
 
     Object.keys(objForSend).forEach((key) => {
-      url.searchParams.append(key, objForSend[key]);
+      objForSend[key] && url.searchParams.append(key, objForSend[key]);
     });
 
-    searchParams.set("page", correctPageNumber + 1);
+   
+    if (min != null) {
+      searchParams.set("min", min);
+    }
+    if (max != null) {
+      searchParams.set("max", max);
+    }
+    searchParams.set("page", props.pageNumber);
     setSearchParams(searchParams);
 
     const prod = fetchGetData(url);
     prod.then((result) => {
-      console.log(result);
       dispatch({
         type: "PRODUCTS",
         payload: result.products,
       });
     });
   }
+
   return (
     <div className="myBtn" onClick={clickPages}>
       {props.pageNumber}
