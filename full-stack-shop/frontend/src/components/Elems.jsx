@@ -22,7 +22,7 @@ export function Elems() {
     { value: "sortPriceLower", name: "По убыванию цены" },
   ];
 
-  function filterPriceProd(minPrice, maxPrice) {
+  function filterProd(minPrice, maxPrice) {
     let selectPrice = { elem: 5, page: 1 };
     let url = new URL("http://localhost:5000/prod");
 
@@ -136,7 +136,7 @@ export function Elems() {
               ))}
             </select>
             {"  "}
-            <button onClick={() => filterPriceProd(minPrice, maxPrice)}>
+            <button onClick={() => filterProd(minPrice, maxPrice)}>
               Поиск
             </button>
             <button onClick={() => clearFilter()}>Сбросить фильтр</button>
@@ -170,7 +170,7 @@ export function Elems() {
               ))}
             </select>
             {"  "}
-            <button onClick={() => filterPriceProd(minPrice, maxPrice)}>
+            <button onClick={() => filterProd(minPrice, maxPrice)}>
               Поиск
             </button>
             {"  "}
