@@ -17,18 +17,25 @@ export function Elems() {
   const pages = useSelector((state) => state.page);
 
   let options = [
-  {value: "sortAlphabet", name: "По алфавиту"},
-  {value: "sortPriceUp", name: "По возрастанию цены"},
-  {value: "sortPriceLower", name: "По убыванию цены"}
-];
+    { value: "sortAlphabet", name: "По алфавиту" },
+    { value: "sortPriceUp", name: "По возрастанию цены" },
+    { value: "sortPriceLower", name: "По убыванию цены" },
+  ];
 
   function filterPriceProd(minPrice, maxPrice) {
-    let selectPrice = { elem: 5, page: 1};
+    let selectPrice = { elem: 5, page: 1 };
     let url = new URL("http://localhost:5000/prod");
-    
-if(sortProd !== ""){
-  selectPrice.sort = sortProd;
-}
+
+    if (sortProd !== "") {
+      selectPrice.sort = sortProd;
+    }
+    if (minPrice !== "") {
+      selectPrice.min = minPrice;
+    }
+    if (maxPrice !== "") {
+      selectPrice.max = maxPrice;
+    }
+
     Object.keys(selectPrice).forEach((key) => {
       url.searchParams.append(key, selectPrice[key]);
     });
@@ -74,7 +81,6 @@ if(sortProd !== ""){
   function clearFilter() {
     setMaxPrice("");
     setMinPrice("");
- 
 
     searchParams.set("max", "");
     searchParams.set("min", "");
@@ -121,13 +127,13 @@ if(sortProd !== ""){
               placeholder="до..."
             ></input>
             {"руб."}
-            <select 
-            onChange={(e) => setSortProd(e.target.value)}>
-            <option value="">Сортировка по</option>
-            {options.map(option=>
-            <option key={option.value} value={option.value}>
-                {option.name}
-            </option>)}
+            <select onChange={(e) => setSortProd(e.target.value)}>
+              <option value="">Сортировка по</option>
+              {options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.name}
+                </option>
+              ))}
             </select>
             {"  "}
             <button onClick={() => filterPriceProd(minPrice, maxPrice)}>
@@ -155,13 +161,13 @@ if(sortProd !== ""){
               placeholder="до..."
             ></input>
             {"руб."}
-            <select 
-            onChange={(e) => setSortProd(e.target.value)}>
-            <option value="">Сортировка по</option>
-            {options.map(option=>
-            <option key={option.value} value={option.value}>
-                {option.name}
-            </option>)}
+            <select onChange={(e) => setSortProd(e.target.value)}>
+              <option value="">Сортировка по</option>
+              {options.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.name}
+                </option>
+              ))}
             </select>
             {"  "}
             <button onClick={() => filterPriceProd(minPrice, maxPrice)}>

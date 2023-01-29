@@ -14,9 +14,13 @@ export function MyButton(props) {
   function clickPages() {
     let min = searchParams.get("min");
     let max = searchParams.get("max");
+    let sort = searchParams.get("sort");
 
 
     let objForSend = { elem: 5, page: props.pageNumber };
+    if(sort != null){
+      objForSend.sort = sort;
+    }
     if (min != null) {
       objForSend.min = min;
     }
@@ -35,6 +39,10 @@ export function MyButton(props) {
     }
     if (max != null) {
       searchParams.set("max", max);
+    }
+
+    if(sort !=null){
+      searchParams.set("sort", sort);
     }
     searchParams.set("page", props.pageNumber);
     setSearchParams(searchParams);
