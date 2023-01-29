@@ -4,7 +4,7 @@ import { PORT } from "./public/constant.js";
 import cors from "cors";
 import { fileURLToPath } from "url";
 import { dirname } from "path";
-import { filterPriceMaxMin } from "./filters.js";
+import { filterPriceMaxMin, filterSelectSorted } from "./filters.js";
 import { pagination } from "./pagination.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -26,10 +26,10 @@ app.get("/prod", (req, res) => {
   page = Number(page);
 
   const filterByMinMax = filterPriceMaxMin(req, data);
-  const paginationData = pagination(elem, filterByMinMax);
+  const filterSelect = filterSelectSorted(req, filterByMinMax);
+  const paginationData = pagination(elem, filterSelect);
 
-  
-  let paginationArr = paginationData[page - 1]; // ppaginationArr == undefined
+  let paginationArr = paginationData[page - 1]; // paginationArr == undefined
   if (paginationArr == undefined) {
     paginationArr = [];
   }
