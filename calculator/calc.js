@@ -10,7 +10,7 @@ let inp = document.querySelector("#input");
  function getResult() {
      isNotCal = true
      result = eval(inp.value)
-     inp.value = result
+     inp.value = result;
  }
 
  function deleteOne() {
@@ -28,7 +28,6 @@ for(let num of inps){
                 inp.value = ""
             }
             inp.value = inp.value + this.value
-            isNotCal = false;
-            
+            isNotCal = false;   
     });   
 }
