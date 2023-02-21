@@ -3,7 +3,6 @@ import { lists } from "./List";
 import { Catalogue } from "./Catalogue";
 import "./App.css"
 
-
 function App() {
   const [notes1, setNotes1] = useState([...lists]);
   const[notes2, setNotes2] = useState([]);
@@ -34,7 +33,6 @@ function removeElem2(index){
   copy2.splice(index,1);
   setNotes2(copy2);
 }
-
 
   return (
     <div className="App">
