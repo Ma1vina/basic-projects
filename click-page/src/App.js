@@ -2,9 +2,6 @@ import React, {useState} from "react"
 import './App.css';
 import { Page } from './Page';
 
-
-
-
 function App() {
   const [isOpen, setisOpen] = useState(false);
 
