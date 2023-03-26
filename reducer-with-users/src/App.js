@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import uuid from "react-uuid";
+import { getCustomers } from "./thunkAsync/thunk";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,9 +58,10 @@ function App() {
           <button onClick={() => addCustomer(prompt())} className="btn-style">
             Добавить пользователя
           </button>
+         
           {/* <button className="btn-style">Удалить пользователя</button> */}
         </div>
-
+        <button onClick={()=>dispatch(getCustomers())}> Загрузить пользоватеей из базы</button>
         {customer.length > 0 ? (
           <div>
             {customer.map(elem => (
